@@ -19,7 +19,7 @@
 		"lint:css": "npx stylelint '**/*.scss' '**/*.css' --fix --allow-empty-input",
 		"lint:js": "npx eslint --fix",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts build && wp-scripts plugin-zip",
+		"plugin-zip": "wp-scripts build --blocks-manifest --experimental-modules --webpack-copy-php && wp-scripts plugin-zip",
 		"start": "wp-scripts start --blocks-manifest --experimental-modules --webpack-copy-php"
 	},
 	"dependencies": {
