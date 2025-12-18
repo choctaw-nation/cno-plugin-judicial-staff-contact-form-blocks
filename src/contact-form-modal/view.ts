@@ -1,21 +1,15 @@
-import { store, getContext, getElement } from '@wordpress/interactivity';
+import { store, getContext } from '@wordpress/interactivity';
 
-export type ServerState = {
-	state: {
-		isModalOpen: boolean;
-		staffEmail: string;
-		formSubmitted: boolean;
-		modal: HTMLDialogElement;
-	};
+type ServerState = {
+	isModalOpen: boolean;
+	staffEmail: string;
+	formSubmitted: boolean;
+	modal: HTMLDialogElement | null;
 };
 
 const { state, actions } = store( 'staffContactForm', {
 	state: {
-		get modal() {
-			return document.getElementById(
-				'contactFormModal'
-			) as HTMLDialogElement;
-		},
+		modal: null as HTMLDialogElement | null,
 	},
 	actions: {
 		openModal() {
@@ -46,13 +40,19 @@ const { state, actions } = store( 'staffContactForm', {
 		},
 	},
 	callbacks: {
-		syncDialog() {
+		initModal() {
 			const dialog = document.getElementById(
 				'contactFormModal'
 			) as HTMLDialogElement;
-			if ( ! dialog ) {
+			if ( dialog ) {
+				state.modal = dialog;
+			}
+		},
+		syncDialog() {
+			if ( ! state.modal ) {
 				return;
 			}
+			const dialog = state.modal;
 			if ( state.isModalOpen ) {
 				actions.openModal();
 				const closeButton = dialog.querySelector(
