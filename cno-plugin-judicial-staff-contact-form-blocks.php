@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Choctaw Plugin Starter
- * Plugin URI: https://github.com/choctaw-nation/cno-template-plugin
- * Description: Quick Boilerplate for starting a new plugin
- * Version: 1.2.1
+ * Plugin Name: Judicial Staff Contact Form Blocks
+ * Plugin URI: https://github.com/choctaw-nation/cno-plugin-judicial-staff-contact-form-blocks
+ * Description: Adds custom Gutenberg blocks for judicial staff contact forms.
+ * Version: 1.0.0
  * Author: Choctaw Nation of Oklahoma
  * Author URI: https://www.choctawnation.com
  * Text Domain: cno
@@ -12,12 +12,13 @@
  * Requires PHP: 8.2
  * Requires at least: 6.7.0
  * Tested up to: 6.9.0
+ * Requires Plugins: gravityforms
  *
  * @package ChoctawNation
- * @subpackage PluginStarter
+ * @subpackage ContactFormBlocks
  */
 
-use ChoctawNation\Plugin_Loader;
+use ChoctawNation\ContactFormBlocks\Plugin_Loader;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die;

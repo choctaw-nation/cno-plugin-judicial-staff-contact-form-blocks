@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "cno/staff-contact-modal",
+	"title": "Staff Contact Modal",
+	"icon": "email-alt2",
+	"category": "embed",
+	"description": "Shared staff contact modal using Gravity Forms.",
+	"supports": {
+		"inserter": false,
+		"multiple": false,
+		"reusable": false,
+		"html": false,
+		"interactivity": true
+	},
+	"attributes": {
+		"isVisible": {
+			"type": "boolean",
+			"default": false
+		},
+		"gravityFormsId": {
+			"type": "number"
+		}
+	},
+	"editorScript": "file:./index.tsx",
+	"viewStyle": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.ts"
+}
