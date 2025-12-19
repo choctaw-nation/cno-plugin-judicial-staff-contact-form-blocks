@@ -28,6 +28,7 @@ class Plugin_Loader {
 	 * Constructor
 	 *
 	 * @param string $dir_path The directory path of the plugin
+	 * @param string $dir_url The directory URL of the plugin
 	 */
 	public function __construct( string $dir_path, string $dir_url ) {
 		$this->dir_path = $dir_path;
