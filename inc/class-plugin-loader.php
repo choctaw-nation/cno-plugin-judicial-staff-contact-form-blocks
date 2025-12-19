@@ -29,9 +29,9 @@ class Plugin_Loader {
 	 *
 	 * @param string $dir_path The directory path of the plugin
 	 */
-	public function __construct( string $dir_path,string $dir_url ) {
+	public function __construct( string $dir_path, string $dir_url ) {
 		$this->dir_path = $dir_path;
-		$this->dir_url = $dir_url;
+		$this->dir_url  = $dir_url;
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 	}
@@ -96,13 +96,13 @@ class Plugin_Loader {
 	 * Load Script to handle Modal Block insertion
 	 */
 	public function enqueue_block_assets() {
-		$asset_file = require $this->dir_path . 'build/insertStaffModalBlock.ts.asset.php';
+		$asset_file = require $this->dir_path . 'build/insertStaffModalBlock.asset.php';
 		wp_enqueue_script(
 			'insert-staff-modal-block-editor-script',
 			$this->dir_url . 'build/insertStaffModalBlock.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
-			array('strategy'=>'defer')
+			array( 'strategy' => 'defer' )
 		);
 	}
 }
