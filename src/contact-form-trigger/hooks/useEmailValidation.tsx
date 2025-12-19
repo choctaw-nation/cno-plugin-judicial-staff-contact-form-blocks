@@ -4,11 +4,11 @@ import { store as editorStore } from '@wordpress/editor';
 
 const lockNamespace = 'choctaw-judicial/contact-form-email';
 
-export default function useEmailValidation( emailAddress ) {
+export default function useEmailValidation( emailAddress?: string ) {
 	const [ helpText, setHelpText ] = useState( '' );
 	const { lockPostSaving, unlockPostSaving } = useDispatch( editorStore );
 
-	function isValidEmail( email: string ) {
+	function isValidEmail( email?: string ) {
 		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
 			String( email ?? '' ).trim()
 		);
@@ -18,8 +18,7 @@ export default function useEmailValidation( emailAddress ) {
 		if ( ! emailAddress ) {
 			lockPostSaving( lockNamespace );
 			setHelpText( 'Email is required before saving.' );
-		}
-		if ( ! isValidEmail( emailAddress ) ) {
+		} else if ( ! isValidEmail( emailAddress ) ) {
 			lockPostSaving( lockNamespace );
 			setHelpText( 'Please enter a valid email address.' );
 		} else {

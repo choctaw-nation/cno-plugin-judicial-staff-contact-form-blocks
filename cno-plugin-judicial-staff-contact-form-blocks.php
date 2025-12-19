@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once __DIR__ . '/inc/class-plugin-loader.php';
-$plugin_loader = new Plugin_Loader( plugin_dir_path( __FILE__ ) );
+$plugin_loader = new Plugin_Loader( plugin_dir_path( __FILE__ ), plugin_dir_url( __FILE__ ) );
 
 register_activation_hook( __FILE__, array( $plugin_loader, 'activate' ) );
 register_deactivation_hook( __FILE__, array( $plugin_loader, 'deactivate' ) );

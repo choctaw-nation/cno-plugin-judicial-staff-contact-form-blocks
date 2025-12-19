@@ -28,6 +28,12 @@
 	"devDependencies": {
 		"@eslint/compat": "^2",
 		"@eslint/eslintrc": "^3",
+		"@wordpress/block-editor": "^15.9.0",
+		"@wordpress/blocks": "^15.9.0",
+		"@wordpress/data": "^10.36.0",
+		"@wordpress/dom-ready": "^4.36.0",
+		"@wordpress/editor": "^14.36.0",
+		"@wordpress/element": "^6.36.0",
 		"@wordpress/icons": "^11.3.0",
 		"@wordpress/scripts": "^31",
 		"eslint": "^9",

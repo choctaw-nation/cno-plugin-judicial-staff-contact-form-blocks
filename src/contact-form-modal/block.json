@@ -18,12 +18,16 @@
 			"type": "boolean",
 			"default": false
 		},
-		"gravityFormsId": {
-			"type": "number"
+		"closeWithBackdropClick": {
+			"type": "boolean",
+			"default": true
+		},
+		"allowBodyScrollWhileOpen": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"editorScript": "file:./index.tsx",
 	"viewStyle": "file:./style-index.css",
-	"render": "file:./render.php",
 	"viewScriptModule": "file:./view.ts"
 }

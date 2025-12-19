@@ -18,13 +18,23 @@ class Plugin_Loader {
 	private string $dir_path;
 
 	/**
+	 * The directory URL of the plugin
+	 *
+	 * @var string $dir_url
+	 */
+	private string $dir_url;
+
+	/**
 	 * Constructor
 	 *
 	 * @param string $dir_path The directory path of the plugin
+	 * @param string $dir_url The directory URL of the plugin
 	 */
-	public function __construct( string $dir_path ) {
+	public function __construct( string $dir_path, string $dir_url ) {
 		$this->dir_path = $dir_path;
+		$this->dir_url  = $dir_url;
 		add_action( 'init', array( $this, 'register_blocks' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_assets' ) );
 	}
 
 	/**
@@ -33,7 +43,7 @@ class Plugin_Loader {
 	 * @return void
 	 */
 	public function activate(): void {
-		$this->register_blocks();
+		// No actions required on activation currently.
 	}
 
 	/**
@@ -81,5 +91,19 @@ class Plugin_Loader {
 		foreach ( array_keys( $manifest_data ) as $block_type ) {
 			register_block_type( $blocks_path . "/{$block_type}" );
 		}
+	}
+
+	/**
+	 * Load Script to handle Modal Block insertion
+	 */
+	public function enqueue_block_assets() {
+		$asset_file = require $this->dir_path . 'build/insertStaffModalBlock.asset.php';
+		wp_enqueue_script(
+			'insert-staff-modal-block-editor-script',
+			$this->dir_url . 'build/insertStaffModalBlock.js',
+			$asset_file['dependencies'],
+			$asset_file['version'],
+			array( 'strategy' => 'defer' )
+		);
 	}
 }
