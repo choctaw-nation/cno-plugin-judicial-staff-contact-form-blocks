@@ -97,7 +97,17 @@ class Plugin_Loader {
 	 * Load Script to handle Modal Block insertion
 	 */
 	public function enqueue_block_assets() {
-		$asset_file = require $this->dir_path . 'build/insertStaffModalBlock.asset.php';
+		$asset_file = $this->dir_path . 'build/insertStaffModalBlock.asset.php';
+		if ( file_exists( $this->dir_path . 'build/insertStaffModalBlock.js' ) ) {
+			$asset_file = require $asset_file;
+		} else {
+			_wp_scripts_maybe_doing_it_wrong(
+				'insert-staff-modal-block-editor-script',
+				'The insertStaffModalBlock.js file is missing. Please run the build process to generate the necessary files.',
+				'1.0.0'
+			);
+			return;
+		}
 		wp_enqueue_script(
 			'insert-staff-modal-block-editor-script',
 			$this->dir_url . 'build/insertStaffModalBlock.js',

@@ -45,8 +45,8 @@ function extendConfig( cfg ) {
 
 	cfgCopy.output = {
 		...cfg.output,
-		filename: isModuleOutput ? '[name].js' : '[name].js',
-		chunkFilename: isModuleOutput ? '[name].[id].js' : '[name].[id].js',
+		filename: '[name].js',
+		chunkFilename: '[name].[id].js',
 	};
 
 	return cfgCopy;

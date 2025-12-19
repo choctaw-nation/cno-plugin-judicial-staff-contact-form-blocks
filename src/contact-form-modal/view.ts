@@ -50,7 +50,7 @@ const { state, actions, callbacks } = store( 'staffContactForm', {
 	},
 	callbacks: {
 		/**
-		 * Add modal to state elements are ready
+		 * Add modal to state when elements are ready
 		 */
 		initModal() {
 			const dialog = document.getElementById(
