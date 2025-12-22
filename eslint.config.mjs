@@ -27,7 +27,7 @@ export default defineConfig( [
 		)
 	),
 	{
-		files: [ 'src/js/**/*.{js,ts,jsx,tsx}' ],
+		files: [ 'src/**/*.{js,ts,jsx,tsx}' ],
 		languageOptions: {
 			globals: globals.browser,
 		},
